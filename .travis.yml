@@ -16,7 +16,7 @@ script:
   - cp $(ls | grep rclone-v)/* ./astroneer-offsite-backups-$TRAVIS_TAG/rclone/
   - ls -latr ./astroneer-offsite-backups-$TRAVIS_TAG/
   - cd ./astroneer-offsite-backups-$TRAVIS_TAG/
-  - zip astroneer-offsite-backups-$TRAVIS_TAG.zip ./*
+  - zip -r astroneer-offsite-backups-$TRAVIS_TAG.zip ./*
 deploy:
   provider: releases
   api_key:
