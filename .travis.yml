@@ -9,6 +9,7 @@ script:
   - echo $TRAVIS_TAG > ./astroneer-offsite-backups-$TRAVIS_TAG/version
   - cp astroneer-offsite.ps1 ./astroneer-offsite-backups-$TRAVIS_TAG/astroneer-offsite.ps1
   - cp LICENSE ./astroneer-offsite-backups-$TRAVIS_TAG/LICENSE
+  - cp README.md ./astroneer-offsite-backups-$TRAVIS_TAG/
   - wget https://downloads.rclone.org/rclone-current-windows-amd64.zip
   - unzip rclone-current-windows-amd64.zip
   - mkdir ./astroneer-offsite-backups-$TRAVIS_TAG/rclone/

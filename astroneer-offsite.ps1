@@ -1,5 +1,4 @@
 param($sourceDirectory, $onlineTarget, $retentionInDays, $install, $frequencyInMinutes) 
-<# astroneer-offiste.ps1 #>
 
 $version = Get-Content -Path "version"
 Write-Host "astroneer-offsite v$version"
