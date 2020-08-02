@@ -12,7 +12,7 @@ Did I save you some time?  [Buy me a :coffee::smile:](https://venmo.com/alex-sch
 
 1. Download the [latest release](https://github.com/alex4108/astroneer-offsite-backups/releases), and extract the files.
 1. Open a powershell session and `cd` to the folder you extracted to, eg `cd C:\Users\Administrator\Downloads\astroneer-offsite-backups\`
-1. Setup rclone for an offsite location: `.\rclone\rclone.exe config`
+1. Setup rclone for an offsite location: `.\rclone\rclone.exe config` [You might find the rclone documentation useful](https://rclone.org/docs/)
 
 # Configuration
 
