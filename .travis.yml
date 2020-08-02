@@ -1,7 +1,11 @@
 os: linux
 language: bash
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y install zip
 script: 
   - mkdir ./src/
+  - echo $TRAVIS_TAG
   - echo $TRAVIS_TAG > ./src/version
   - cp astroneer-offsite.ps1 ./src/astroneer-offsite.ps1
   - cp LICENSE ./src/LICENSE
