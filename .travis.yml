@@ -3,8 +3,8 @@ language: bash
 script: 
   - mkdir ./src/
   - echo "'"$TRAVIS_TAG"'" > ./src/version
-  - mv astroneer-offsite.ps1 > ./src
-  - mv LICENSE ./src
+  - cp astroneer-offsite.ps1 > ./src/astroneer-offsite.ps1
+  - cp LICENSE ./src/LICENSE
   - cd ./src
   - zip astroneer-offsite-backups-"'"$TRAVIS_TAG"'".zip
 deploy:
