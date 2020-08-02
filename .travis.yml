@@ -1,0 +1,17 @@
+os: linux
+language: bash
+script: 
+  - mkdir ./src/
+  - echo "'"$TRAVIS_TAG"'" > ./src/version
+  - mv astroneer-offsite.ps1 > ./src/
+  - mv LICENSE ./src/
+  - cd ./src/
+  - zip astroneer-offsite-backups-"'"$TRAVIS_TAG"'".zip
+deploy:
+  provider: releases
+  api_key:
+    secure: rAkWUwE716dfCKViE2vPTMYWYkZ0f7wxQGpl9Td8T3KpUrUhdFpQAR+nZyhQ04KQvfMNOvRmRynQuxLtXJR9VnE4UFnGzo3yrvvmVwBt8rYhIr+K7kNf5TdRvLQlR106R5RjLumHyAMdZoCGDKd+U5Nk3cVYwfWNki7M4z3w1iDYKYuhaFG5bXHivoWXlkSNr6DdD8pDm3JJcxllsXYZzE2hfMIqo57wmtiSMFaa0X7X21AMS1ozJ8oWG5dMsL17cvkqxBx7T5dfW55F32CmBiocnFqegSiQOHELbwmCNQ0e1S66ORVevF+E39Ri9Zd0llMrAvPV+WT7U2Hg30I1SoPIwbe3kML5qWV2rEu3TsWVGrNljLJJSJIFyYV1H2GMzjCFfssa+J5pDlZu8nsnMPG6ixfXrf0b79WiW4aQTx47PIYgqag8AOlkEhA60LJOK38Cknjpf/aqEMAS1NrwlXVIVFCMPa3UgmGyc292TE1vqBsrl+G7PPQ1GZsZj/Va49ABUQ1LgMVvZLZOqKfJzZrZmnSo2bozvvdmfHwzmgX0nN2CCJv7YQ6bYbUZn7eXZVBRMkGJ6ygTUXOOukqMYwqCitx0+TkNrSJZwwP/qPxh/aaKIY5Q/uYofAwD28WhRaKrqUsGm0tX37xkqj6ZdQ6V6MLr2aeR6NFdEbIvhEY=
+  file: src/astroneer-offsite-backups-"'"$TRAVIS_TAG"'".zip
+  on:
+    repo: alex4108/astroneer-offsite-backups
+  skip_cleanup: 'true'
