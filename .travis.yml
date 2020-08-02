@@ -4,17 +4,23 @@ before_install:
   - sudo apt-get update
   - sudo apt-get -y install zip
 script: 
-  - mkdir ./src/
+  - mkdir ./astroneer-offsite-backups-$TRAVIS_TAG/
   - echo $TRAVIS_TAG
-  - echo $TRAVIS_TAG > ./src/version
-  - cp astroneer-offsite.ps1 ./src/astroneer-offsite.ps1
-  - cp LICENSE ./src/LICENSE
-  - zip astroneer-offsite-backups-$TRAVIS_TAG.zip ./src/version ./src/astroneer-offiste.ps1 ./src/LICENSE
+  - echo $TRAVIS_TAG > ./astroneer-offsite-backups-$TRAVIS_TAG/version
+  - cp astroneer-offsite.ps1 ./astroneer-offsite-backups-$TRAVIS_TAG/astroneer-offsite.ps1
+  - cp LICENSE ./astroneer-offsite-backups-$TRAVIS_TAG/LICENSE
+  - wget https://downloads.rclone.org/rclone-current-windows-amd64.zip
+  - unzip rclone-current-windows-amd64.zip
+  - mkdir ./astroneer-offsite-backups-$TRAVIS_TAG/rclone/
+  - cp $(ls | grep rclone-v)/* ./astroneer-offsite-backups-$TRAVIS_TAG/rclone/
+  - ls -latr ./astroneer-offsite-backups-$TRAVIS_TAG/
+  - cd ./astroneer-offsite-backups-$TRAVIS_TAG/
+  - zip astroneer-offsite-backups-$TRAVIS_TAG.zip ./*
 deploy:
   provider: releases
   api_key:
     secure: rAkWUwE716dfCKViE2vPTMYWYkZ0f7wxQGpl9Td8T3KpUrUhdFpQAR+nZyhQ04KQvfMNOvRmRynQuxLtXJR9VnE4UFnGzo3yrvvmVwBt8rYhIr+K7kNf5TdRvLQlR106R5RjLumHyAMdZoCGDKd+U5Nk3cVYwfWNki7M4z3w1iDYKYuhaFG5bXHivoWXlkSNr6DdD8pDm3JJcxllsXYZzE2hfMIqo57wmtiSMFaa0X7X21AMS1ozJ8oWG5dMsL17cvkqxBx7T5dfW55F32CmBiocnFqegSiQOHELbwmCNQ0e1S66ORVevF+E39Ri9Zd0llMrAvPV+WT7U2Hg30I1SoPIwbe3kML5qWV2rEu3TsWVGrNljLJJSJIFyYV1H2GMzjCFfssa+J5pDlZu8nsnMPG6ixfXrf0b79WiW4aQTx47PIYgqag8AOlkEhA60LJOK38Cknjpf/aqEMAS1NrwlXVIVFCMPa3UgmGyc292TE1vqBsrl+G7PPQ1GZsZj/Va49ABUQ1LgMVvZLZOqKfJzZrZmnSo2bozvvdmfHwzmgX0nN2CCJv7YQ6bYbUZn7eXZVBRMkGJ6ygTUXOOukqMYwqCitx0+TkNrSJZwwP/qPxh/aaKIY5Q/uYofAwD28WhRaKrqUsGm0tX37xkqj6ZdQ6V6MLr2aeR6NFdEbIvhEY=
-  file: src/astroneer-offsite-backups-$TRAVIS_TAG.zip
+  file: astroneer-offsite-backups-$TRAVIS_TAG.zip
   on:
     tags: true
     repo: alex4108/astroneer-offsite-backups
